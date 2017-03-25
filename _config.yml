@@ -1,7 +1,8 @@
 # Site settings
 title: Ryan Adkins
 email: ryanadkins@gmail.com
-description: Personal website of Ryan Adkins.
+description: 
+  Personal website of Ryan Adkins.
 url: "http://www.ryanadkins.com" # the base hostname & protocol for your site - used for feed.xml
 github_username:  ryanadkins
 
