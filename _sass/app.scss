@@ -6,9 +6,9 @@
 * -----------Helpful Tips------------------
 * Naming Convention: Use Class for CSS and Id for JS
 * Try not to nest more than 1 deep (LESS/SASS)
-* Don't use !important in Base or Layout css (if needed refactor code)
+* Don"t use !important in Base or Layout css (if needed refactor code)
 * Avoid jQuery methods that inlines CSS
-* Don't code CSS for the page. Code it for the system
+* Don"t code CSS for the page. Code it for the system
 * Use simple selectors (ie. single selector or one child selector) Google Page Speed Best Practice
 * Encapuslation: 
 *   Code should do one thing and one thing only
@@ -16,15 +16,15 @@
 *   Should testable with no extra dependencies on other modules
 */
 
-@charset 'utf-8';
+@charset "utf-8";
 
 /*  ==========================================
     Dependency Files (Imports, Variables, Mixins, etc)
     ========================================== */
 
-@import 'dependency-files/settings';
-@import 'foundation';
-@import 'motion-ui';
+@import "dependency-files/settings";
+@import "foundation";
+@import "motion-ui";
 
 // Global Variables
 @import "dependency-files/colors";
@@ -101,7 +101,9 @@
             Module Child Element: .moduleName--subcomponent (ie. btn--round)
     ========================================== */
 
-// @import ""; // Modules
+// @import ""; // Page Elements
+// @import ""; // Template
+
 
 /*  ==========================================
     State - Likely has JavaScript dependencies
@@ -115,7 +117,7 @@
 /*  ==========================================
     Theme - Only used for color/theme styles
     ========================================== */
-    //@import "theme/theme"; 
+    //@import "theme/theme"; // Theme
 
 /*  ==========================================
     Singular CSS files (3rd Party CSS, shame, area, working files, etc)

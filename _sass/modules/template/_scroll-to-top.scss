@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Module: JS Plugin Scroll-to-top
+   ========================================================================== */
+
+.back-to-top {
+    position: fixed;
+    right: 1.5em;
+    text-decoration: none;
+    color: $green-06;
+    padding: .5em;
+    display: none;
+    border-radius: 5em;
+    z-index: $zindex-BacktoTop;
+}
+
+a.back-to-top {
+    opacity: 0.8;
+    color: $green-06;
+}
+a.back-to-top:hover {
+    opacity: 1;
+    color: $orange-04;
+}
+a.back-to-top > span.fa {font-size: 36px;}
+
+/* ==========================================================================
+    Media Queries
+   ========================================================================== */
+
+// Small Grid - Mobile
+@include screen(0em, 40em) {
+    .back-to-top {bottom: 6em;}
+}
+
+// Medium Grid - Tablet
+@include screen(40.063em, 64em) {
+    .back-to-top {bottom: 4em;}
+}
+
+// Large Grid - Desktop
+@include min-screen(64.001em)  {
+    .back-to-top {
+        right: 2em;
+        bottom: 0;
+    }
+}
+

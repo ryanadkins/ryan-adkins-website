@@ -1,0 +1,58 @@
+/* ==========================================================================
+    Module: Skip Navigation
+   ========================================================================== */
+.skip-navigation a {
+    padding: rem-calc(6px);
+    position: absolute;
+    top: rem-calc(-130px);
+    left: 0;
+    color: white;
+    border: 1px solid white;
+    border-top: none; 
+    border-bottom-left-radius: rem-calc(8px);
+    border-bottom-right-radius: rem-calc(8px);
+    background: transparent;
+    -webkit-transition: top 1s ease-out, background 1s linear;
+    transition: top 1s ease-out, background 1s linear;
+    z-index: 100;
+    word-break: normal;
+    word-wrap: normal;
+}
+.skip-navigation a:focus {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #BF1722;
+    outline: 0;
+    -webkit-transition: top .1s ease-in, background .5s linear;
+    transition: top .1s ease-in, background .5s linear;
+}
+
+// Skip Navigation Anchor
+a.skipnavContent-anchor {
+    display: block;
+    position: relative;
+    top: rem-calc(-16px);
+    visibility: hidden;
+}   
+
+/* ==========================================================================
+    Media Queries
+   ========================================================================== */
+
+// Medium Grid - Tablet
+@include screen(40.063em, 64.1em) {
+
+}
+
+// Large Grid - Desktop
+@include min-screen(64.11em) {
+    .skip-navigation.skip-navigation-search_is-active a:focus {
+        left: 20px;
+        top: 0;
+    }
+    .skip-navigation.skip-navigation-search_is-inactive a:focus {
+        left: 20px;
+        top: -30px;
+    }
+} 

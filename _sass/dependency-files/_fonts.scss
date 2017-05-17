@@ -1,0 +1,84 @@
+/* ==========================================================================
+    Dependency Files: Fonts
+   ========================================================================== */
+
+/* Fool-proof @font-face from http://codepen.io/javasteve99/pen/hDxpn */
+/* Based on http://coding.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/ */
+
+@mixin font-face($font-family, $file-path, $font-weight, $font-style) {
+  @font-face {
+    font-family: $font-family;
+      src: url('#{$file-path}.eot');
+      src: url('#{$file-path}.eot?#iefix') format('embedded-opentype'),
+           url('#{$file-path}.woff') format('woff'),
+           url('#{$file-path}.woff2') format('woff2'),
+           url('#{$file-path}.ttf') format('truetype'),
+           url('#{$file-path}.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+  // Chrome for Windows rendering fix: http://www.adtrak.co.uk/blog/font-face-chrome-rendering/
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    @font-face {
+      font-family: $font-family;
+        src: url('#{$file-path}.svg##{$font-family}') format('svg');
+    }
+  }
+}
+
+@include font-face(robotoLight, '/fonts/RobotoCondensed-Light', 300, normal);
+@include font-face(robotoLighti, '/fonts/RobotoCondensed-LightItalic', 300, italic);
+@include font-face(robotoRegular, '/fonts/RobotoCondensed-Regular', 400, normal);
+@include font-face(robotoRegulari, '/fonts/RobotoCondensed-Italic', 400, italic);
+@include font-face(robotoBold, '/fonts/RobotoCondensed-Bold', 700, normal);
+@include font-face(robotoBoldi, '/fonts/RobotoCondensed-BoldItalic', 700, italic);
+@include font-face(robotoBlack, '/fonts/RobotoCondensed-Black', 800, normal);
+@include font-face(FontAwesome, '/bower_components/font-awesome/fonts/fontawesome-webfont', normal, normal);
+
+@mixin robotoLight {
+    font-family: 'robotoLight', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+@mixin robotoLighti {
+    font-family: 'robotoLighti', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+@mixin robotoRegular {
+    font-family: 'robotoRegular', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@mixin robotoRegulari {
+    font-family: 'robotoRegulari', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin robotoBold {
+    font-family: 'robotoBold', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+@mixin robotoBoldi {
+    font-family: 'robotoBoldi', sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+@mixin robotoBlack {
+    font-family: 'robotoBlack', sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+@mixin FontAwesome {
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-style: normal;
+}

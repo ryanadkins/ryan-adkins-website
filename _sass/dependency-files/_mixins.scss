@@ -1,0 +1,72 @@
+/* ==========================================================================
+     Dependency Files: SCSS Mixins
+   ========================================================================== */
+
+@mixin rotate( $degrees ) {
+  transform: rotate(#{$degrees}deg);
+
+  filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)});
+  -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', M11=#{cos($degrees)}, M12=-#{sin($degrees)}, M21=#{sin($degrees)}, M22=#{cos($degrees)})";
+  zoom: 1;
+ } 
+
+ @mixin word-wrap() {
+  word-break: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin file-icons() {
+  &[href$=".pdf"]::before{
+    font-family: FontAwesome;
+    padding-right: rem-calc(5px);
+    content: "\f1c1"; //pdf file
+  }
+  &[href$=".doc"]::before, 
+  &[href$=".docx"]::before
+  {
+    font-family: FontAwesome;
+    padding-right: rem-calc(5px);
+    content: "\f1c2"; //word file
+  }
+  &[href$=".xlt"]::before,
+  &[href$=".xlsx"]::before,
+  {
+    font-family: FontAwesome;
+    padding-right: rem-calc(5px);
+    content: "\f1c3"; //excel file
+  }
+  &[href$=".ppt"]::before,
+  &[href$=".pptx"]::before,
+  {
+    font-family: FontAwesome;
+    padding-right: rem-calc(5px);
+    content: "\f1c4"; //powerpoint file
+  }
+}
+
+@mixin links ($link, $visit, $hover, $active, $focus) {
+  a {
+    color: $link;
+    &:visited {
+      color: $visit;
+    }
+    &:hover {
+      color: $hover;   
+    }
+    &:active {
+      color: $active;
+    }
+    &:focus {
+      color: $focus;
+    }
+  }
+}
