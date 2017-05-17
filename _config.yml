@@ -14,4 +14,8 @@ exclude:
   - "bower.json"
   - "node_modules"
   - "package.json"
+  - "gulpfile.js"
+  - "README.md"
+  - "Gemfile"
+  - "Gemfile.lock"
 
