@@ -73,7 +73,7 @@ gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
  */
 gulp.task('sass', function() {
-  return gulp.src('_sass/app.scss')
+  return gulp.src(srcDir.scss)
     .pipe(sass({
             includePaths: sassPaths,
             onError: browserSync.notify
@@ -81,9 +81,9 @@ gulp.task('sass', function() {
     .pipe(autoprefixer({
       browsers: ['last 2 versions', 'ie >= 9']
     }))
-    .pipe(gulp.dest('_site/css'))
+    .pipe(gulp.dest(outputDir.baseCss))
     .pipe(browserSync.reload({stream:true}))
-    .pipe(gulp.dest('css'));
+    .pipe(gulp.dest(outputDir.css));
 });
 
 // Concatenate and Minify JavaScript 
