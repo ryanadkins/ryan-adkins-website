@@ -1,15 +1,39 @@
+/*
+* Main style include file LESS/SASS using Scalable and Modular Architecture for CSS (SMACSS - www.smacss.com)
+* Project Website: www.ryanadkins.com
+* You can read more about this project at www.ryanadkins.com/about/website.html
+*
+* -----------Helpful Tips------------------
+* Naming Convention: Use Class for CSS and Id for JS
+* Try not to nest more than 1 deep (LESS/SASS)
+* Don't use !important in Base or Layout css (if needed refactor code)
+* Avoid jQuery methods that inlines CSS
+* Don't code CSS for the page. Code it for the system
+* Use simple selectors (ie. single selector or one child selector) Google Page Speed Best Practice
+* Encapuslation: 
+*   Code should do one thing and one thing only
+*   Media queries should be included with modules
+*   Should testable with no extra dependencies on other modules
+*/
+
 @charset 'utf-8';
 
-@import 'settings';
+/*  ==========================================
+    Dependency Files (Imports, Variables, Mixins, etc)
+    ========================================== */
+
+@import 'dependency-files/settings';
 @import 'foundation';
 @import 'motion-ui';
 
-// Jekyll Styles
-//@import 'main';
-//@import 'base';
-//@import 'layout';
-//@import 'syntax-highlighting';
+// Global Variables
+@import "dependency-files/colors";
+@import "dependency-files/fonts";
+@import "dependency-files/media-queries";
+@import "dependency-files/mixin";
+@import "dependency-files/zindex";
 
+// Foundation Components
 @include foundation-global-styles;
 @include foundation-grid;
 // @include foundation-flex-grid;
@@ -55,3 +79,45 @@
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
+
+/*  ==========================================
+    Base Styles - Element Selectors (Minimal as possible)
+    ========================================== */
+// @import "base/base";
+
+/*  ==========================================
+    Layout - Containers (Header, Content, Sections, Sidebar, Footer, etc)
+        Layouts specify widths and margins
+    ========================================== */
+// @import "layout/layout";
+
+/*  ==========================================
+    Modules - Actual content elements including variations on module
+        Modules expand to fill layout
+        Seperate file for each Module
+        Naming Covention
+            Module: .moduleName (ie. btn)
+            Module Variation: .moduleName-submodule (ie. btn-large)
+            Module Child Element: .moduleName--subcomponent (ie. btn--round)
+    ========================================== */
+
+// @import ""; // Modules
+
+/*  ==========================================
+    State - Likely has JavaScript dependencies
+        States are !important (Except to rule)
+        Prefix states with "is-" (ie. .btn-is-active .btn-is-disabled)
+        States that are specific to module should include module name (ie. .btn-is-active .btn-is-disabled)
+        js prefix in nameing indicates no css on class
+    ========================================== */
+    //@import "state/state"; // States
+
+/*  ==========================================
+    Theme - Only used for color/theme styles
+    ========================================== */
+    //@import "theme/theme"; 
+
+/*  ==========================================
+    Singular CSS files (3rd Party CSS, shame, area, working files, etc)
+    ========================================== */
+// @import "pages/error-pages";
