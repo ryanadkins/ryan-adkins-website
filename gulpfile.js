@@ -1,13 +1,37 @@
-var gulp        = require('gulp'),
-    browserSync = require('browser-sync'),
-    sass        = require('gulp-sass'),
-    autoprefixer= require('gulp-autoprefixer'),
+'use strict';
+/////////////////////////////////////////
+// Add References
+/////////////////////////////////////////
+
+// Reference Gulp
+var gulp = require('gulp');
+
+// Utility plugins
+var browserSync = require('browser-sync'),
+    notify      = require('gulp-notify'),
+    rename      = require('gulp-rename'),
+    sourcemaps  = require('gulp-sourcemaps'),
+    gutil       = require('gulp-util'),
     cp          = require('child_process');
 
+// Jekyll
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
 var messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
 };
+
+// JavaScript Plugins
+var uglify = require('gulp-uglify'),
+    concat = require('gulp-concat');
+
+// SCSS Plugins
+var sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
+    minifyCSS = require('gulp-minify-css'),
+    uncss = require('gulp-uncss');
+
+// Image Plugins
+var imagemin = require('gulp-imagemin');
 
 /////////////////////////////////////////
 // Set Directories
@@ -141,8 +165,8 @@ gulp.task('copy', ['copyFonts', 'copyBower']);
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch('_scss/*.scss', ['sass']);
-    //gulp.watch('./_scripts/**/*.js', ['scripts']);
+    gulp.watch(srcDir.scss, ['sass']);
+    //gulp.watch(srcDir.scripts, ['scripts']);
     gulp.watch(['*.html', '_layouts/*.html', '_includes/*.html', '_posts/*'], ['jekyll-rebuild']);
 });
 
