@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 /*
 * Main style include file LESS/SASS using Scalable and Modular Architecture for CSS (SMACSS - www.smacss.com)
 * Project Website: www.ryanadkins.com
@@ -16,8 +18,6 @@
 *   Should testable with no extra dependencies on other modules
 */
 
-@charset "utf-8";
-
 /*  ==========================================
     Dependency Files (Imports, Variables, Mixins, etc)
     ========================================== */
@@ -30,7 +30,7 @@
 @import "dependency-files/colors";
 @import "dependency-files/fonts";
 @import "dependency-files/media-queries";
-@import "dependency-files/mixin";
+@import "dependency-files/mixins";
 @import "dependency-files/zindex";
 
 // Foundation Components
