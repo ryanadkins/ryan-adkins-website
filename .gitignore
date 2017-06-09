@@ -1,6 +1,7 @@
 _site
 .sass-cache
 .users.yml
+.vscode
 /css/
 /bower_components/
 /node_modules/
