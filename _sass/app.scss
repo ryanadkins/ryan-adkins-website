@@ -23,8 +23,8 @@
     ========================================== */
 
 @import "dependency-files/settings";
-@import "foundation";
-@import "motion-ui";
+@import "../bower_components/foundation-sites/scss/foundation";
+@import "../bower_components/motion-ui/motion-ui";
 
 // Global Variables
 @import "dependency-files/colors";
