@@ -47,7 +47,7 @@ var outputDir = {
 
 // Set Source Directory
 var srcDir = {
-    scss: './_scss/**/*.scss',
+    scss: './_sass/**/*.scss',
     scripts: './_scripts/*.js',
     images: './_images/**/*.{png,gif,jpg,jpeg,svg}',
     fonts: './_fonts/*.{eot,svg,ttf,woff}',
