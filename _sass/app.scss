@@ -104,6 +104,11 @@
 // @import "modules/page-elements"; // Page Elements
 // @import "modules/template/"; // Template
 
+@import "modules/page-elements/home-hero.scss"; // Page Elements
+@import "modules/page-elements/home-carosel.scss"; // Page Elements
+@import "modules/template/global-navigation"; // Template
+@import "modules/template/footer"; // Template
+
 
 /*  ==========================================
     State - Likely has JavaScript dependencies
