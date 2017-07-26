@@ -10,10 +10,10 @@ github_username:  ryanadkins
 markdown: kramdown
 
 exclude:
-  - "bower_components"
   - "bower.json"
   - "node_modules"
   - "package.json"
+  - "package-lock.json"
   - "gulpfile.js"
   - "README.md"
   - "Gemfile"
