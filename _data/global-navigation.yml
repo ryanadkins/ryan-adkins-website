@@ -1,0 +1,6 @@
+- url:  /about/
+  name: About
+- url:  /portfolio/
+  name: Portfolio 
+- url:  /blog/
+  name: Blog
