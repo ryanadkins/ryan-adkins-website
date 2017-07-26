@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
   {% include head.html %}
-
   <body>
-
+    <!-- Global Navigation -->
     {% include header.html %}
 
-    <div class="row page-content">
-      <div class="small-12 columns wrapper">
-        {{ content }}
-      </div>
-    </div>
+    {{ content }}
 
+    <!-- Global Footer -->
     {% include footer.html %}
+
     <!-- Add footer JS -->
     {% include scripts.html %}
   </body>
-
 </html>
