@@ -40,7 +40,7 @@ var imagemin = require('gulp-imagemin');
 
 // Source Directory
 var srcDir = {
-    scss: './_sass/**/*.scss',
+    sass: './_sass/**/*.scss',
     scripts: './_scripts/*.js',
     images: './_images/**/*.{png,gif,jpg,jpeg,svg}',
     fonts: './_fonts/*.{eot,svg,ttf,woff}',
@@ -81,7 +81,7 @@ gulp.task('cleanScripts', function () {
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
  */
 gulp.task('styles', function() {
-  return gulp.src(srcDir.scss)
+  return gulp.src(srcDir.sass)
              .pipe(sass({
                     includePaths: sassPaths,
                     onError: browserSync.notify
@@ -167,7 +167,7 @@ gulp.task('browser-sync', ['styles', 'scripts', 'jekyll-build'], function() {
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch(srcDir.scss, ['styles']);
+    gulp.watch(srcDir.sass, ['styles']);
     gulp.watch(srcDir.scripts, ['scripts']);
     gulp.watch(['*.html', '_layouts/*.html', '_includes/*.html', '_posts/*'], ['jekyll-rebuild']);
 });
