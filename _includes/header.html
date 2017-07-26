@@ -5,7 +5,11 @@
     <div class="row">
       <div class="small-6 columns">
         <!-- make h1 if homepage -->
-        <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        {% if page.logo_heading %}
+          <h1><a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+        {% else %}
+          <a class="site-title" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        {% endif %}
       </div>
       <div class="small-6 columns">
         <nav>
