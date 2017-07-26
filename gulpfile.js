@@ -12,7 +12,7 @@ var browserSync = require('browser-sync'),
     rename      = require('gulp-rename'),
     sourcemaps  = require('gulp-sourcemaps'),
     gutil       = require('gulp-util'),
-    cp          = require('child_process');
+    cp          = require('child_process'),
     del         = require('del');
 
 // Jekyll
