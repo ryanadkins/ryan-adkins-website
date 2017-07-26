@@ -4,5 +4,6 @@ _site
 .vscode
 .package-lock.json
 /css/
+/js/
 /bower_components/
 /node_modules/
