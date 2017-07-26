@@ -35,17 +35,10 @@ var sass = require('gulp-sass'),
 var imagemin = require('gulp-imagemin');
 
 /////////////////////////////////////////
-// Set Directories
+// Directories Paths
 /////////////////////////////////////////
 
-// Set Output Directory
-var outputDir = {
-    base: './_site',
-    baseCss: './_site/css',
-    css: './css'
-}
-
-// Set Source Directory
+// Source Directory
 var srcDir = {
     scss: './_sass/**/*.scss',
     scripts: './_scripts/*.js',
@@ -60,69 +53,68 @@ var sassPaths = [
   './bower_components/motion-ui/src'
 ];
 
+// Output Directory
+var outputDir = {
+    base: './_site',
+    baseCSS: './_site/css',
+    baseJS: './_site/js',
+    css: './css',
+    js: './js'
+};
+
 /////////////////////////////////////////
 //       Start Gulp Tasks
 /////////////////////////////////////////
 
-// Clean site directory
-gulp.task('clean', require('del').bind(null, '_site'));
-
-/**
- * Build the Jekyll Site
- */
-gulp.task('jekyll-build', function (done) {
-    browserSync.notify(messages.jekyllBuild);
-    return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
-        .on('close', done);
+// Clean site directories
+gulp.task('clean', function () {
+    del.sync(['./_site/**']);
 });
-
-/**
- * Rebuild Jekyll & do page reload
- */
-gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
-    browserSync.reload();
+gulp.task('cleanStyles', function () {
+    del.sync(['./_site/css/**', './css/**', './.sass-cache/**']);
 });
-
-/**
- * Wait for jekyll-build, then launch the Server
- */
-gulp.task('browser-sync', ['sass', 'jekyll-build'], function() {
-    browserSync({
-        server: {
-            baseDir: outputDir.base
-        }
-    });
+gulp.task('cleanScripts', function () {
+    del.sync(['./_site/js/**', './js/**']);
 });
 
 /**
  * Compile files from _scss into both _site/css (for live injecting) and site (for future jekyll builds)
  */
-gulp.task('sass', function() {
+gulp.task('styles', function() {
   return gulp.src(srcDir.scss)
-    .pipe(sass({
-            includePaths: sassPaths,
-            onError: browserSync.notify
-    }))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9']
-    }))
-    .pipe(gulp.dest(outputDir.baseCss))
-    .pipe(browserSync.reload({stream:true}))
-    .pipe(gulp.dest(outputDir.css));
+             .pipe(sass({
+                    includePaths: sassPaths,
+                    onError: browserSync.notify
+             }))
+             .pipe(autoprefixer({
+                browsers: ['last 2 versions', 'ie >= 9']
+             }))
+             .pipe(gulp.dest(outputDir.baseCSS))
+             .pipe(gulp.dest(outputDir.css))
+             .pipe(sourcemaps.init())
+             .pipe(cleancss())
+             .pipe(sourcemaps.write())
+             .pipe(rename({
+                suffix: '.min'
+             }))
+             .pipe(gulp.dest(outputDir.baseCSS))
+             .pipe(browserSync.reload({stream:true}))
+             .pipe(gulp.dest(outputDir.css))
 });
 
 // Concatenate and Minify JavaScript 
-/*gulp.task('scripts', function(){
+gulp.task('scripts', function(){
   return gulp.src(srcDir.scripts)
     .pipe(concat('app.js'))
     .on('error', gutil.log)
-    .pipe(gulp.dest(outputDir.base + '/scripts/'))
-     .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .on('error', gutil.log)
-    .pipe(gulp.dest(outputDir.base + '/scripts/'))
+    .pipe(gulp.dest(outputDir.baseJS))
+    .pipe(gulp.dest(outputDir.js))
+     //.pipe(rename({suffix: '.min'}))
+    //.pipe(uglify())
+    .on('error', gutil.log);
+    //.pipe(gulp.dest(outputDir.base + '/scripts/'))
     //.pipe(notify({ message: 'Scripts include task complete' }));
-});*/
+});
 
 // Optimize Images
 /*gulp.task('images', function(){
@@ -143,41 +135,50 @@ gulp.task('sass', function() {
     //.pipe(notify({ message: 'Images task complete' }));
 });*/
 
-/*// Copy Fonts
-gulp.task('copyFonts', function() {
-  return gulp.src(srcDir.fonts, {base:"app/fonts/"})
-    .pipe(gulp.dest(outputDir + '/fonts/'))
-    //.pipe(notify({ message: 'Copy Fonts task complete' }));
+/**
+ * Build the Jekyll Site
+ */
+gulp.task('jekyll-build', function (done) {
+    browserSync.notify(messages.jekyllBuild);
+    return cp.spawn( jekyll , ['build'], {stdio: 'inherit'})
+             .on('close', done);
 });
 
-// Copy Bower Components
-gulp.task('copyBower', function() {
-  return gulp.src(srcDir.bower_components, {base:"app"})
-    .pipe(gulp.dest(outputDir + '/bower_components/'))
-    //.pipe(notify({ message: 'Copy Bower Components task complete' }));
+/**
+ * Rebuild Jekyll & do page reload
+ */
+gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+    browserSync.reload();
 });
 
-// Copy Fonts, and Bower Components
-gulp.task('copy', ['copyFonts', 'copyBower']);
-*/
+/**
+ * Launch the Server
+ */
+gulp.task('browser-sync', ['styles', 'scripts', 'jekyll-build'], function() {
+    browserSync({
+        server: {
+            baseDir: outputDir.base
+        }
+    });
+});
 
 /**
  * Watch scss and js files for changes & recompile
  * Watch html/md files, run jekyll & reload BrowserSync
  */
 gulp.task('watch', function () {
-    gulp.watch(srcDir.scss, ['sass']);
-    //gulp.watch(srcDir.scripts, ['scripts']);
+    gulp.watch(srcDir.scss, ['styles']);
+    gulp.watch(srcDir.scripts, ['scripts']);
     gulp.watch(['*.html', '_layouts/*.html', '_includes/*.html', '_posts/*'], ['jekyll-rebuild']);
 });
-
-/**
- * Deploy Site
- */
-gulp.task('netlify-deploy', ['sass', 'jekyll-build']);
 
 /**
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
 gulp.task('default', ['browser-sync', 'watch']);
+
+/**
+ * Deploy Site
+ */
+gulp.task('netlify-deploy', ['styles', 'scripts', 'jekyll-build']);
