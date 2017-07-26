@@ -2,6 +2,7 @@ _site
 .sass-cache
 .users.yml
 .vscode
+.package-lock.json
 /css/
 /bower_components/
 /node_modules/
