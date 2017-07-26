@@ -28,8 +28,8 @@ var uglify = require('gulp-uglify'),
 // SCSS Plugins
 var sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    minifyCSS = require('gulp-minify-css'),
-    uncss = require('gulp-uncss');
+    cleancss = require('gulp-clean-css'),
+    postcss = require('gulp-postcss');
 
 // Image Plugins
 var imagemin = require('gulp-imagemin');
