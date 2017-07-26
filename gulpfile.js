@@ -13,6 +13,7 @@ var browserSync = require('browser-sync'),
     sourcemaps  = require('gulp-sourcemaps'),
     gutil       = require('gulp-util'),
     cp          = require('child_process');
+    del         = require('del');
 
 // Jekyll
 var jekyll   = process.platform === 'win32' ? 'jekyll.bat' : 'jekyll';
