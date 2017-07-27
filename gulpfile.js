@@ -47,12 +47,6 @@ var srcDir = {
     bower_components: './bower_components/**/*'
 };
 
-var sassPaths = [
-  './bower_components/normalize.scss/sass',
-  './bower_components/foundation-sites/scss',
-  './bower_components/motion-ui/src'
-];
-
 // Output Directory
 var outputDir = {
     base: './_site',
