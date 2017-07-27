@@ -6,7 +6,7 @@
     position: absolute;
     top: rem-calc(-130px);
     left: 0;
-    color: white;
+    color: $pure-white;
     border: 1px solid white;
     border-top: none; 
     border-bottom-left-radius: rem-calc(8px);
@@ -22,7 +22,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    background: #BF1722;
+    background: $red;
     outline: 0;
     -webkit-transition: top .1s ease-in, background .5s linear;
     transition: top .1s ease-in, background .5s linear;
