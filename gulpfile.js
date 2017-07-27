@@ -76,18 +76,15 @@ gulp.task('cleanScripts', function () {
  */
 gulp.task('styles', function() {
   return gulp.src(srcDir.sass)
-             .pipe(sass({
-                    includePaths: sassPaths,
-                    onError: browserSync.notify
-             }))
+             .pipe(sourcemaps.init())
+             .pipe(sass().on('error', sass.logError))
              .pipe(autoprefixer({
                 browsers: ['last 2 versions', 'ie >= 9']
              }))
+             .pipe(sourcemaps.write('./maps'))
              .pipe(gulp.dest(outputDir.baseCSS))
              .pipe(gulp.dest(outputDir.css))
-             .pipe(sourcemaps.init())
              .pipe(cleancss())
-             .pipe(sourcemaps.write())
              .pipe(rename({
                 suffix: '.min'
              }))
