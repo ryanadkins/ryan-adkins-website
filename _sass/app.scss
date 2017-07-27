@@ -26,13 +26,6 @@
 @import "../bower_components/foundation-sites/scss/foundation";
 @import "../bower_components/motion-ui/motion-ui";
 
-// Global Variables
-@import "dependency-files/colors";
-@import "dependency-files/fonts";
-@import "dependency-files/media-queries";
-@import "dependency-files/mixins";
-@import "dependency-files/zindex";
-
 // Foundation Components
 @include foundation-global-styles;
 @include foundation-grid;
@@ -80,6 +73,13 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
+// Global Variables
+@import "dependency-files/colors";
+@import "dependency-files/fonts";
+@import "dependency-files/media-queries";
+@import "dependency-files/mixins";
+@import "dependency-files/zindex";
+
 /*  ==========================================
     Base Styles - Element Selectors (Minimal as possible)
     ========================================== */
@@ -104,8 +104,9 @@
 // @import "modules/page-elements"; // Page Elements
 // @import "modules/template/"; // Template
 
-@import "modules/page-elements/home-hero.scss"; // Page Elements
-@import "modules/page-elements/home-carosel.scss"; // Page Elements
+@import "modules/page-elements/home-hero"; // Page Elements
+@import "modules/page-elements/home-carosel"; // Page Elements
+@import "modules/page-elements/home-page-content"; // Page Elements
 @import "modules/template/global-navigation"; // Template
 @import "modules/template/footer"; // Template
 
