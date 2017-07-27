@@ -40,7 +40,7 @@ var imagemin = require('gulp-imagemin');
 
 // Source Directory
 var srcDir = {
-    sass: './_sass/**/*.scss',
+    sass: './_sass/*.scss',
     scripts: './_scripts/*.js',
     images: './_images/**/*.{png,gif,jpg,jpeg,svg}',
     fonts: './_fonts/*.{eot,svg,ttf,woff}',
