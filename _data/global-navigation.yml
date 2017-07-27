@@ -4,3 +4,5 @@
   name: Portfolio 
 - url:  /blog/
   name: Blog
+- url:  /contact/
+  name: Contact
