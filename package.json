@@ -17,19 +17,20 @@
   },
   "homepage": "https://github.com/ryanadkins/ryan-adkins-website#readme",
   "devDependencies": {
-    "browser-sync": "^2.18.13",
+    "browser-sync": "^2.24.6",
+    "clean-css": "^4.2.1",
+    "concat-with-sourcemaps": "^1.1.0",
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-clean-css": "^3.7.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^3.3.0",
-    "gulp-notify": "^3.0.0",
-    "gulp-postcss": "^7.0.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8"
+    "imagemin": "^6.0.0",
+    "node-sass": "^4.9.3",
+    "postcss": "^7.0.2",
+    "uglify-js": "^3.4.7"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "foundation-sites": "^6.5.0-rc.2",
+    "jquery": "^3.3.1",
+    "motion-ui": "^2.0.3",
+    "what-input": "^5.1.1"
   }
 }
