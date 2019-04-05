@@ -4,7 +4,25 @@
   "description": "Personal website of Ryan Adkins",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "npm-run-all clean:*",
+    "clean:site": "rimraf ./_site/**",
+    "clean:dir": "rimraf ./css/** | rimraf ./.sass-cache/** | rimraf ./js/**",
+    "styles": "npm-run-all styles:*",
+    "styles:scss": "node-sass -o ./_site/css/ ./_sass/app.scss | node-sass -o ./css/ ./_sass/app.scss",
+    "styles:min": "node-sass --output-style compressed -o ./_site/css/min ./_sass/app.scss | node-sass --output-style compressed -o ./css/min/ ./_sass/app.scss",
+    "styles:autoprefix": "postcss -u autoprefixer -r ./_site/css/* && postcss -u autoprefixer -r ./css/*",
+    "scripts:lint": "eslint src/js",
+    "scripts:uglify": "uglifyjs src/js/*.js -m -o ./js/app.js",
+    "images": "imagemin src/images dist/images -p",
+    "jekyll": "jekyll build",
+    "jekyll:watch": "jekyll build --watch",
+    "server": "browser-sync start --server './_site'",
+    "server:reload": "browser-sync reload",
+    "watch:html": "onchange 'src/js/*.js' -- npm run build:js && browser-sync reload",
+    "watch:css": "onchange 'src/scss/*.scss' -- npm run build:css && browser-sync reload",
+    "watch:js": "onchange 'src/js/*.js' -- npm run build:js && browser-sync reload",
+    "deploy": ""
   },
   "repository": {
     "type": "git",
@@ -17,20 +35,23 @@
   },
   "homepage": "https://github.com/ryanadkins/ryan-adkins-website#readme",
   "devDependencies": {
-    "browser-sync": "^2.24.6",
+    "autoprefixer": "^9.5.0",
+    "browser-sync": "^2.26.3",
     "clean-css": "^4.2.1",
     "concat-with-sourcemaps": "^1.1.0",
-    "del": "^3.0.0",
-    "imagemin": "^6.0.0",
-    "node-sass": "^4.9.3",
-    "postcss": "^7.0.2",
-    "uglify-js": "^3.4.7"
+    "imagemin-cli": "^4.0.1",
+    "minimatch": "^3.0.4",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^5.2.0",
+    "postcss-cli": "^6.1.2",
+    "uglify-js": "^3.5.3"
   },
   "dependencies": {
     "font-awesome": "^4.7.0",
-    "foundation-sites": "^6.5.0-rc.2",
+    "foundation-sites": "^6.5.3",
     "jquery": "^3.3.1",
     "motion-ui": "^2.0.3",
-    "what-input": "^5.1.1"
+    "what-input": "^5.2.1"
   }
 }
